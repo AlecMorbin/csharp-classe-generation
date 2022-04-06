@@ -9,11 +9,13 @@
 MAX ALUNNI 10
 */
 
+//Variabili globali
 string[] alunniNome = new string[10];
 string[] alunniCognome = new string[10];
 int[] alunniEta = new int[10];
 int numeroPartecipantiAttuale = 0;
 
+//funzioni
 void aggiungiAlunno(string nome,string cognome , int eta)
 {
     for (int i = 0; i < alunniCognome.Length; i++)
@@ -45,36 +47,54 @@ void aggiungiAlunno(string nome,string cognome , int eta)
     }
 }
 
-void stampaArrayString(string[] array)
+
+
+void stampaArray(Array array)
 {
-    foreach (string item in array)
+    //ciclo l'array
+    foreach (var item in array)
     {
-        Console.WriteLine(item);
+        //controllo il tipo
+        if (item is int)
+        {
+            //se intero controllo se non è zero
+            if ((int)item != 0)
+                Console.WriteLine(item);
+        } else if (item is string)
+        {
+            //se stringa controllo è null o vuoto
+            if (!String.IsNullOrEmpty((string)item))
+            Console.WriteLine(item); 
+        }
     }
 }
 
-void stampaArrayInt(int[] array)
-{
-    foreach (int item in array)
-    {
-        Console.WriteLine(item);
-    }
-}
 
 void stampa()
 {
-    stampaArrayString(alunniCognome);
-    stampaArrayString(alunniNome);
-    stampaArrayInt(alunniEta);
+    Console.Write("Cognome: ");
+    stampaArray(alunniCognome);
+    Console.Write("Nome: ");
+    stampaArray(alunniNome);
+    Console.Write("Età: ");
+    stampaArray(alunniEta);
+}
+
+void rimuoviUltimoAlunno()
+{
+    //resetto a default la posizione ultima cosi da "rimuovere" l'ultimo alunno
+    alunniCognome[alunniCognome.Length-1] = "";
+    alunniNome[alunniNome.Length - 1] = "";
+    alunniEta[alunniEta.Length - 1] = 0;
 }
 
 
-Console.WriteLine("Scrivi nome poi cognome poi eta Alunno");
+//Esecuzione
+Console.WriteLine("Scrivi nome poi cognome poi eta di Alunno per aggiungerlo: ");
 string nome = Console.ReadLine();
 string cognome = Console.ReadLine();
 int eta = int.Parse( Console.ReadLine());
 aggiungiAlunno(nome, cognome,eta);
 
-//stampa();
+stampa();
 
-stampaArrayString(alunniCognome);
