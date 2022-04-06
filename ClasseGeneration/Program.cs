@@ -45,6 +45,7 @@ void aggiungiAlunno(string nome,string cognome , int eta)
             break;
         }
     }
+    numeroPartecipantiAttuale++;
 }
 
 
@@ -86,8 +87,21 @@ void rimuoviUltimoAlunno()
     alunniCognome[alunniCognome.Length-1] = "";
     alunniNome[alunniNome.Length - 1] = "";
     alunniEta[alunniEta.Length - 1] = 0;
+    Console.WriteLine("Il numero attuale di alunni in classe è: " + numeroPartecipantiAttuale);
 }
 
+float calcolaEtaMediaClasse()
+{
+    float media = 0;
+    int somma = 0;
+    for (int i = 0; i < alunniEta.Length; i++)
+    {
+        somma += alunniEta[i];
+    }
+    media = somma / numeroPartecipantiAttuale;
+
+    return media;
+}
 
 //Esecuzione
 Console.WriteLine("Scrivi nome poi cognome poi eta di Alunno per aggiungerlo: ");
@@ -97,4 +111,5 @@ int eta = int.Parse( Console.ReadLine());
 aggiungiAlunno(nome, cognome,eta);
 
 stampa();
+Console.WriteLine("L'età media della classe è: " + calcolaEtaMediaClasse());
 
