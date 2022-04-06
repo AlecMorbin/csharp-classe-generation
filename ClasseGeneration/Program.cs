@@ -134,6 +134,44 @@ void stampaStatistiche()
     Console.WriteLine("L'età media della classe è: " + calcolaEtaMediaClasse());
     Console.WriteLine("Il più giovane ha " + EtaPiuGiovane() + " anni");
     Console.WriteLine("Il più vecchio ha " + EtàPiuVecchio() + " anni");
+    Console.WriteLine("Ecco le informazioni sullo studente più giovane");
+    StudentePiuGiovane();
+    Console.WriteLine("Ecco le informazioni sullo studente più vecchio");
+    StudentePiuVecchio();   
+}
+
+void StudentePiuVecchio()
+{
+    int max = 0;
+    int index = 0;
+
+    for (int i = 0; i < alunniEta.Length; i++)
+    {
+        if (alunniEta[i] != 0 && alunniEta[i] > max)
+        {
+            max = alunniEta[i];
+            index = i;
+        }
+    }
+
+    Console.WriteLine("Cognome: "+alunniCognome[index]+"\nNome: "+alunniNome[index]+"\nEtà: "+alunniEta[index]);
+}
+
+void StudentePiuGiovane()
+{
+    int min = alunniEta[0];
+    int index = 0;
+
+    for (int i = 0; i < alunniEta.Length; i++)
+    {
+        if (alunniEta[i] < min && alunniEta[i] != 0)
+        {
+            min = alunniEta[i];
+            index = i;
+        }
+    }
+
+    Console.WriteLine("Cognome: " + alunniCognome[index] + "\nNome: " + alunniNome[index] + "\nEtà: " + alunniEta[index]);
 }
 //Esecuzione
 
