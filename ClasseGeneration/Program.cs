@@ -73,11 +73,11 @@ void stampaArray(Array array)
 
 void stampa()
 {
-    Console.Write("Cognome: ");
+    Console.WriteLine("\nCognomi: ");
     stampaArray(alunniCognome);
-    Console.Write("Nome: ");
+    Console.WriteLine("\nNomi: ");
     stampaArray(alunniNome);
-    Console.Write("Età: ");
+    Console.WriteLine("\nEtà: ");
     stampaArray(alunniEta);
 }
 
@@ -103,7 +103,27 @@ float calcolaEtaMediaClasse()
     return media;
 }
 
+int EtaPiuGiovane()
+{
+    int min = alunniEta[0];
+    for (int i = 0; i < alunniEta.Length; i++)
+    {
+        if (alunniEta[i] < min && alunniEta[i] != 0)
+        {
+            min = alunniEta[i];
+        }
+    }
+    return min;
+}
+
 //Esecuzione
+
+//testing con piu alunni
+aggiungiAlunno("Marco", "Giaretta", 15);
+aggiungiAlunno("Alessandro", "Mantovani", 17);
+aggiungiAlunno("Lara", "Bianchi", 16);
+
+
 Console.WriteLine("Scrivi nome poi cognome poi eta di Alunno per aggiungerlo: ");
 string nome = Console.ReadLine();
 string cognome = Console.ReadLine();
@@ -113,3 +133,4 @@ aggiungiAlunno(nome, cognome,eta);
 stampa();
 Console.WriteLine("L'età media della classe è: " + calcolaEtaMediaClasse());
 
+Console.WriteLine("Il più giovane ha " + EtaPiuGiovane() + " anni");
