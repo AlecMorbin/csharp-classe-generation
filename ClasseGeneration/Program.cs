@@ -116,6 +116,18 @@ int EtaPiuGiovane()
     return min;
 }
 
+int EtàPiuVecchio()
+{
+    int max = 0;
+    for (int i = 0; i < alunniEta.Length; i++)
+    {
+        if(alunniEta[i] != 0 && alunniEta[i] > max)
+        {
+            max = alunniEta[i];
+        }
+    }
+    return max;
+}
 //Esecuzione
 
 //testing con piu alunni
@@ -134,3 +146,4 @@ stampa();
 Console.WriteLine("L'età media della classe è: " + calcolaEtaMediaClasse());
 
 Console.WriteLine("Il più giovane ha " + EtaPiuGiovane() + " anni");
+Console.WriteLine("Il più vecchio ha " + EtàPiuVecchio() + " anni");
