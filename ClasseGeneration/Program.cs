@@ -128,6 +128,13 @@ int EtàPiuVecchio()
     }
     return max;
 }
+
+void stampaStatistiche()
+{
+    Console.WriteLine("L'età media della classe è: " + calcolaEtaMediaClasse());
+    Console.WriteLine("Il più giovane ha " + EtaPiuGiovane() + " anni");
+    Console.WriteLine("Il più vecchio ha " + EtàPiuVecchio() + " anni");
+}
 //Esecuzione
 
 //testing con piu alunni
@@ -143,7 +150,4 @@ int eta = int.Parse( Console.ReadLine());
 aggiungiAlunno(nome, cognome,eta);
 
 stampa();
-Console.WriteLine("L'età media della classe è: " + calcolaEtaMediaClasse());
-
-Console.WriteLine("Il più giovane ha " + EtaPiuGiovane() + " anni");
-Console.WriteLine("Il più vecchio ha " + EtàPiuVecchio() + " anni");
+stampaStatistiche();
